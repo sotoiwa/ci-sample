@@ -12,3 +12,5 @@ CIツールでdocker buildするサンプルです。
 
 TravisCIの場合、Slack Appのトークンを各リポジトリのymlに書く。トークンを暗号化する場合は各リポジトリ毎に暗号化する必要がある。
 CircleCIの場合、Slack AppのWebhook URLをコンソールから各リポジトリに設定する。
+
+CodeBuildの場合、CloudEventsでSNSトピックに通知。そこからAWS ChatBotか、Lambdaで通知する。
