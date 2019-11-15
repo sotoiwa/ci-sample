@@ -4,9 +4,9 @@ jobs:
     machine: true
     steps:
     - checkout
-    - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - run: docker build -t $DOCKER_USER/$IMAGE:$TAG .
-    - run: docker push $DOCKER_USER/$IMAGE:$TAG
+    - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - run: docker build -t $DOCKER_USERNAME/$IMAGE:$TAG .
+    - run: docker push $DOCKER_USERNAME/$IMAGE:$TAG
     environment:
       IMAGE: ci-sample
       TAG: circleci
