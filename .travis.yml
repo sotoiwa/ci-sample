@@ -1,15 +1,15 @@
 language: minimal
 dist: xenial
 env:
-  IMAGE=ci-sample
+  REPO=ci-sample
   TAG=travis
 script:
-- docker build -t $DOCKER_USERNAME/$IMAGE:$TAG .
+- docker build -t $DOCKER_USERNAME/$REPO:$TAG .
 after_success:
 - if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then
     # echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    docker push $DOCKER_USERNAME/$IMAGE:$TAG;
+    docker push $DOCKER_USERNAME/$REPO:$TAG;
   fi
 notifications:
   slack:

@@ -1,0 +1,19 @@
+version: 0.2
+
+env:
+  variables:
+    "IMAGE": "ci-sample"
+    "TAG": "codebuild"
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  build:
+    commands:
+    - docker build -t $DOCKER_USERNAME/$REPO:$TAG .
+  post_build:
+    commands:
+    - docker push $DOCKER_USERNAME/$REPO:$TAG
